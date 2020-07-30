@@ -1,0 +1,17 @@
+---
+- hosts: web
+  become: yes
+  become_method: sudo
+  tasks:
+   - name: create group "tomcat" to web server
+     group:
+       name: tomcat
+       state: present
+       gid: 2020
+
+   - name: create a user
+     user:
+       name: tomcat
+       group: tomcat
+       password: Qd9aZH.YxKaLw
+       shell: "/bin/bash"
